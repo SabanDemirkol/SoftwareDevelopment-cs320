@@ -34,8 +34,21 @@ public class AdminMenuPanel extends JPanel {
 		
 		checkStudents.setBounds(200, 150, 200, 30);
 		checkStatus.setBounds(200, 200, 200, 30);
+		
 		startAllocate.setBounds(200, 250, 200, 30);
+		startAllocate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, " Allocation started ");
+			}
+		});
+		
 		reAllocate.setBounds(200, 300, 200, 30);
+		reAllocate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, " Reallocation started ");
+			}
+		});
+		
 		delete.setBounds(200, 350, 200, 30);
 		
 		logOff.setBounds(450, 520, 120, 30);
