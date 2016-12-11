@@ -1,6 +1,15 @@
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class UserLogInPanel extends JPanel {
 	 private int width = 600;
@@ -28,6 +37,12 @@ public class UserLogInPanel extends JPanel {
 		label1.setFont(new Font("", Font.BOLD, 20));
 		
 		applyFormButton.setBounds(200, 150, 200, 30);
+		applyFormButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				fillForm();
+			}
+		});
+		
 		checkRoomButton.setBounds(200, 200, 200, 30);
 		checkAllocationButton.setBounds(200, 250, 200, 30);
 		
@@ -83,5 +98,52 @@ public class UserLogInPanel extends JPanel {
 		paymentFrame.add(approve);
 		paymentFrame.add(explanation);
 		paymentFrame.setVisible(true);
+	}
+	
+	public void fillForm() {
+		
+		JFrame formFrame = new JFrame();
+		formFrame.setSize(width, height);
+		formFrame.setLayout(null);
+		
+		String[] priorityOptions = new String[] {"Scholarship", "Disabled"};
+		String[] genderOptions = new String[] {"Male", "Female"};
+		
+		JLabel label1 = new JLabel(" Application Form ");
+		JLabel explanation = new JLabel( " Please fill the following questions: ");
+		JTextField name = new JTextField("Enter your name: ");
+		JTextField surname = new JTextField("Enter your surname: ");
+		JComboBox<String> gender = new JComboBox<>(genderOptions);
+		JComboBox<String> priority = new JComboBox<>(priorityOptions);	
+		JButton apply = new JButton("Apply");
+		
+		label1.setBounds(220, -10, 400, 100);
+		label1.setForeground(Color.blue);
+		label1.setFont(new Font("", Font.BOLD, 20));
+		
+		explanation.setBounds(10, 50, 400, 100);
+		name.setBounds(50, 150, 300, 30);
+		surname.setBounds(50, 200, 300, 30);
+		gender.setBounds(50, 250, 100, 30);
+		priority.setBounds(50, 300, 100, 30);
+		
+		apply.setBounds(250, 500, 100, 30);
+		apply.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, " Application is successfull. ");
+				System.exit(0);
+			}
+		});
+		
+		formFrame.add(label1);
+		formFrame.add(explanation);
+		formFrame.add(name);
+		formFrame.add(surname);
+		formFrame.add(gender);
+		formFrame.add(priority);
+		formFrame.add(apply);
+		
+		formFrame.setVisible(true);
+		
 	}
 }
