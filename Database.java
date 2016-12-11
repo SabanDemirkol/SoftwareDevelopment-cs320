@@ -9,16 +9,19 @@ public class Database {
 	public static final String DB_URL = "jdbc:mysql://localhost:3306/dms";
 	public static final String USER = "root";
 	public static final String PASS = "root123";
+	public Statement stmt;
+	
 
-	public Database() {
+	public Database() throws SQLException {
+		 Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		 stmt = conn.createStatement();
+		 
 	}
 
 	public void createStudents() throws SQLException {
 		ArrayList<Integer> ids = new ArrayList<Integer>();
 		ArrayList<Integer> passwords = new ArrayList<Integer>();
 		Random random = new Random();
-		Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-		Statement stmt = conn.createStatement();
 		createIDs(ids, random);
 		createPasswords(passwords, random);
 		executeDatabase(ids, passwords, stmt);
@@ -63,5 +66,6 @@ public class Database {
 	public static void main(String[] args) throws SQLException {
 		Database main = new Database();
 		main.createStudents();
+		
 	}
 }
